@@ -22,5 +22,5 @@ setup(
 		"Operating System :: OS Independent",
 	],
 	include_package_data=True,
-	install_requires=["pymongo", "dnspython"],
+	install_requires=["pymongo", "dnspython"]
 )
