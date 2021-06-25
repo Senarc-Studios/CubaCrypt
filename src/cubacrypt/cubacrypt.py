@@ -15,14 +15,17 @@ def encrypt(data=None, mongo_url=None):
 	else:
 		try:
 			cyphered_data = cuba_cypher.cypher(data)
-			encrypted = base64.b64encode(bytes(cyphered_data, 'utf-8'))
+			encrypted = cyphered_data.encode("ascii")
+			base64_bytes = base64.b64encode(encrypted)
+			encrypted_string = base64_bytes.decode("ascii")
+
 			cluster = MongoClient(mongo_url)
 			collection = cluster.CubaCrypt.data
 
 			length = [8, 10, 12,16, 18,32]
 			key = keygen.generate(random.choice(length))
 			cyphered_key = cuba_cypher.cypher(key)
-			collection.insert_one({ "_id": cyphered_key, "data": encrypted })
+			collection.insert_one({ "_id": cyphered_key, "data": encrypted_string })
 			return cyphered_key
 		except Exception as e:
 			print(f"[CubaCrypt]: Error Exception occurred in CubaCrypt:\n{e}\n\nError could've occurred due to Invalid Mongo URL or Missing Collection/DataBase, please check the documentation.")
@@ -43,12 +46,14 @@ def decrypt(key=None, mongo_url=None):
 				return "[CubaCrypt]: Invalid Key"
 
 			for entries in collection.find( { "_id": data } ):
-				data = f"{entries['data']}"
+				data = entries['data']
 
-				data = data.replace("Binary('", "")
-				data = data.replace("', 0)", "")
-				decrypted = base64.b64decode(bytes(data, "utf-8"))
-				decyphered_data = cuba_cypher.decypher(str(decrypted))
+				base64_bytes = data.encode("ascii")
+  
+				decrypted_string_bytes = base64.b64decode(base64_bytes)
+				decrypted_string = decrypted_string_bytes.decode("ascii")
+
+				decyphered_data = cuba_cypher.decypher(str(decrypted_string))
 				
 				return decyphered_data
 		except Exception as e:
