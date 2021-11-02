@@ -9,6 +9,7 @@ setup(
 	author_email="benitzcoding@senarc.org",
 	description="An custom encryption method made by encrypting with many types Number systems and characters.",
 	url="https://github.com/Senarc-Studios/CubaCrypt",
+	packages=['cubacrypt'],
 	classifiers=[
 		'Topic :: Security :: Cryptography',
 		'Topic :: Security',
