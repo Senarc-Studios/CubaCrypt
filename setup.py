@@ -2,14 +2,13 @@ from distutils.core import setup
 
 setup(
 	name='cubacrypt',  
-	version='0.1.2',
-	repository="https://github.com/BenitzCoding/CubaCrypt",
+	version='1.2',
+	repository="https://github.com/Senarc-Studios/CubaCrypt",
 	scripts=['cubacrypt'] ,
-	author="Benitz Original",
-	author_email="benitz@numix.xyz",
+	author="BenitzCoding",
+	author_email="benitzcoding@senarc.org",
 	description="An custom encryption method made by encrypting with many types Number systems and characters.",
-	url="https://github.com/BenitzCoding/CubaCrypt/releases/tag/v0.1.2",
-	package_dir={"": "src"},
+	url="https://github.com/Senarc-Studios/CubaCrypt",
 	classifiers=[
 		"Programming Language :: Python :: 3",
 		"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
