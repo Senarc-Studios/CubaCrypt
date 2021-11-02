@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
 	name='cubacrypt',  
@@ -10,9 +10,22 @@ setup(
 	description="An custom encryption method made by encrypting with many types Number systems and characters.",
 	url="https://github.com/Senarc-Studios/CubaCrypt",
 	classifiers=[
-		"Programming Language :: Python :: 3",
+		'Topic :: Security :: Cryptography',
+		'Topic :: Security',
+		'Topic :: Database',
+		'Environment :: Web Environment',
+		'Development Status :: 5 - Production/Stable',
 		"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-		"Operating System :: OS Independent",
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+		"Programming Language :: Python :: 3",
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Topic :: Internet',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Utilities',
 	],
 	include_package_data=True,
 	install_requires=["pymongo", "dnspython"],
